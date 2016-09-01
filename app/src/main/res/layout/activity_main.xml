@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context="com.example.willian.leitorbrcode.MainActivity">
+    tools:context="com.example.willian.leitorbrcode.MainActivity"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/textView1"
@@ -14,34 +15,31 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
         android:layout_margin="20dp"
-        android:text="Scan"
+        android:text="Centralize o leitor para o codigo de barra"
         android:textColor="#000000"
-        android:textSize="30dp" />
+        android:textSize="16dp" />
+
+    <ImageView
+        android:layout_width="302dp"
+        android:layout_height="250dp"
+        android:contentDescription="@string/app_name"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/qrcode"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/imageView2"
+        android:layout_weight="0.24" />
 
 
 
     <Button
-        android:id="@+id/scanner"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:onClick="codeScanner"
-        android:text="QR Code"
-        android:textSize="18dp" >
-    </Button>
-
-    <Button
-        android:id="@+id/scanner2"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:onClick="codeScanner"
-        android:text="Bar Code"
-        android:textSize="18dp" >
-    </Button>
+        android:id="@+id/btConfirmar"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:text="Leitor de Código"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginTop="60dp"
+        android:onClick="codeScanner"/>
 
 </LinearLayout>

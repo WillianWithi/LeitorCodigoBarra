@@ -1,5 +1,6 @@
 package com.example.willian.leitorbrcode;
 
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -18,4 +19,6 @@ public class Show extends AppCompatActivity {
         show = (TextView) findViewById(R.id.textView2);
         show.setText(codigo);
     }
+
+
 }

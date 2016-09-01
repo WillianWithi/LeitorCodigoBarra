@@ -45,6 +45,8 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
     }
 
 
+
+
     @Override
     public void handleResult(Result rawResult) {
         Log.e("handler", rawResult.getText());
