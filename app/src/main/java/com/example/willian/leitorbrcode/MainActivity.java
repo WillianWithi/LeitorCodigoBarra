@@ -2,6 +2,7 @@ package com.example.willian.leitorbrcode;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -13,9 +14,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class MainActivity extends Activity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
-
     public static final int MY_PERMISSIONS_REQUEST_CAMERA = 42;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +29,6 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
                     MY_PERMISSIONS_REQUEST_CAMERA);
         }
     }
-
-
     // método para call de scanner
     public void codeScanner(View view){
         setContentView(mScannerView);
@@ -39,9 +36,10 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
         mScannerView.startCamera();
     }
 
+
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onDestroy() {
+        super.onDestroy();
         mScannerView.stopCamera();
         mScannerView = null;
     }
@@ -49,15 +47,14 @@ public class MainActivity extends Activity implements ZXingScannerView.ResultHan
 
     @Override
     public void handleResult(Result rawResult) {
-
         Log.e("handler", rawResult.getText());
         Log.e("handler", rawResult.getBarcodeFormat().toString());
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Scan Result");
-        builder.setMessage(rawResult.getText());
-        AlertDialog alert1 = builder.create();
-        alert1.show();
+        String codigo = rawResult.getText();
+        // enviar codigo de barra para a outra tela
+        Intent i = new Intent(MainActivity.this,Show.class);
+        i.putExtra("codigo",codigo);
+        startActivity(i);
     }
 
 }
